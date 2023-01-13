@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block title %}Home{% endblock title%}
+
+{% block body %}
+    <div class="container">
+        <div class="card text-center w-50 p-5" style="margin: 20px auto auto auto;">
+            <h1 class="text-center">Welcome to voting</h1>
+            <a href="{% url 'core:index' %}" class="btn btn-outline-danger w-50 mx-auto" type="button">View all the polls avaliable</a>
+        </div>
+        <div class="text-center w-50 p-3" style="margin: 5px auto 5px auto;">
+            <h1>Result for --> {{ question.question_text }}</h1>
+            <ul class="list-group mb-5">
+                {% for choice in question.choices.all %}
+                <li class="list-group-item mb-3">
+                    {{ choice.choice_text }} - {{ choice.votes }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock body %}
